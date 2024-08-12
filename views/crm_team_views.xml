@@ -1,0 +1,16 @@
+<odoo>
+    <record id="view_crm_team_form_inherited" model="ir.ui.view">
+        <field name="name">crm.team.form.inherited</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sale.crm_team_salesteams_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Elimina o ajusta las referencias a `use_quotations` si no existe -->
+            <xpath expr="//field[@name='invoiced_target']" position="attributes">
+                <attribute name="string">Annual Invoicing Target</attribute>
+            </xpath>
+            <xpath expr="//span[text()='/ Month']" position="replace">
+                <span class="oe_read_only">/ Year</span>
+            </xpath>
+        </field>
+    </record>
+</odoo>
