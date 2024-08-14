@@ -4,12 +4,14 @@
         <field name="model">crm.team</field>
         <field name="inherit_id" ref="sale.crm_team_salesteams_view_form"/>
         <field name="arch" type="xml">
+            <!-- Modificar los atributos del campo invoiced_target -->
             <xpath expr="//field[@name='invoiced_target']" position="attributes">
                 <attribute name="string">Annual Invoicing Target</attribute>
                 <attribute name="help">This field represents the annual invoicing target for the sales team.</attribute>
             </xpath>
-            <xpath expr="//field[@name='invoiced_target']/following-sibling::span[contains(text(), '/ Month')]" position="attributes">
-                <attribute name="invisible">1</attribute>
+            <!-- Reemplazar el texto / Month por / Year -->
+            <xpath expr="//field[@name='invoiced_target']/following-sibling::span[contains(text(), '/ Month')]" position="replace">
+                <span class="flex-grow-1">/ Year</span>
             </xpath>
         </field>
     </record>
